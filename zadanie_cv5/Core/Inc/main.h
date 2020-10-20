@@ -95,7 +95,6 @@ uint8_t switch_state;
  *  @input_param_5 - samples_required: How many samples in row are required to be in the idle state.
  */
 uint8_t checkButtonState(GPIO_TypeDef* PORT, uint8_t PIN, uint8_t edge, uint8_t samples_window, uint8_t samples_required);
-void switchStateFunction();
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
