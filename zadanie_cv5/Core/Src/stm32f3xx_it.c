@@ -215,7 +215,7 @@ void EXTI3_IRQHandler(void)
     						BUTTON_EXTI_SAMPLES_WINDOW,
     						BUTTON_EXTI_SAMPLES_REQUIRED))
     	{
-    		switchStateFunction();
+    		switch_state ^=  1;
     	}
     /* USER CODE END LL_EXTI_LINE_3 */
   }

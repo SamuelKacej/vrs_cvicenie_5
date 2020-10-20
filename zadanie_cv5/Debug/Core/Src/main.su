@@ -11,8 +11,10 @@ stm32f3xx_ll_bus.h:537:22:LL_APB1_GRP1_EnableClock	24	static
 stm32f3xx_ll_bus.h:851:22:LL_APB2_GRP1_EnableClock	24	static
 stm32f3xx_ll_system.h:1618:22:LL_FLASH_SetLatency	16	static
 stm32f3xx_ll_system.h:1631:26:LL_FLASH_GetLatency	4	static
-main.c:66:5:main	16	static
-main.c:128:6:SystemClock_Config	8	static
-main.c:157:9:checkButtonState	24	static
-main.c:180:6:switchStateFunction	4	static
-main.c:189:6:Error_Handler	4	static
+stm32f3xx_ll_gpio.h:798:26:LL_GPIO_IsInputPinSet	16	static
+stm32f3xx_ll_gpio.h:879:22:LL_GPIO_SetOutputPin	16	static
+stm32f3xx_ll_gpio.h:908:22:LL_GPIO_ResetOutputPin	16	static
+main.c:64:5:main	16	static
+main.c:123:6:SystemClock_Config	8	static
+main.c:152:9:checkButtonState	32	static
+main.c:180:6:Error_Handler	4	static

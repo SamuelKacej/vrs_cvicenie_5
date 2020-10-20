@@ -41,14 +41,12 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-uint8_t switch_state = 0;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void switchStateFunction();
 uint8_t check_button_state(GPIO_TypeDef* PORT, uint8_t PIN);
 /* USER CODE BEGIN PFP */
 
@@ -104,17 +102,14 @@ int main(void)
     /* USER CODE END WHILE */
 	  if(switch_state)
 	  	  {
-	  		  LED_ON;
-	  		  //GPIOB->BSRR |= GPIO_BSRR_BS_4;
+	  		  LL_GPIO_SetOutputPin(GPIO_PORT_LED, GPIO_PIN_LED);
 	  		  for(uint16_t i=0; i<0xFF00; i++){}
-	  		  LED_OFF;
-
+	  		  LL_GPIO_ResetOutputPin(GPIO_PORT_LED, GPIO_PIN_LED);
 	  		  for(uint16_t i=0; i<0xFF00; i++){}
 	  	  }
 	  	  else
 	  	  {
-	  		  LED_OFF;
-	  		  //GPIOB->BRR |= GPIO_BRR_BR_3;
+	  		  LL_GPIO_ResetOutputPin(GPIO_PORT_LED, GPIO_PIN_LED);
 	  	  }
     /* USER CODE BEGIN 3 */
   }
@@ -166,7 +161,7 @@ uint8_t checkButtonState(GPIO_TypeDef* PORT, uint8_t PIN, uint8_t edge, uint8_t 
 
 	uint8_t cnt = 0; // counts samples in row
 	for(; samples_window > 0 ; samples_window--){
-		if( edge ^ GET_GPIO_STATE(PORT, PIN))
+		if( edge ^ LL_GPIO_IsInputPinSet(GPIO_PORT_BUTTON, GPIO_PIN_BUTTON))
 			cnt++;
 		else
 			cnt = 0;
@@ -175,10 +170,6 @@ uint8_t checkButtonState(GPIO_TypeDef* PORT, uint8_t PIN, uint8_t edge, uint8_t 
 			return 1;
 	}
 	return 0;
-}
-
-void switchStateFunction(){
-	switch_state ^= 1;
 }
 /* USER CODE END 4 */
 
